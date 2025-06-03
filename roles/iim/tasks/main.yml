@@ -9,7 +9,7 @@
   when: ansible_os_family != "Windows"
 
 - name: Check if IIM is installed (Windows)
-  win_stat:
+  ansible.windows.win_stat:
     path: "{{ iim_install_path }}"
   register: win_iim_dir
   when: ansible_os_family == "Windows"
