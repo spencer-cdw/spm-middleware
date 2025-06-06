@@ -32,6 +32,13 @@
     headers: "{{ download_header }}"
   when: (download_url is defined) and ( jdk_installation_way is defined )
 
+- name: Copy JDK locally (unzip way)
+  copy:
+    src: "{{ liberty_java_zip_path }}"
+    dest: /tmp/jdk.zip
+    remote_src: yes
+  when: (not download_url is defined) and (jdk_installation_way is defined ) 
+
 - name: Prepare Open JDK Folder (unzip way)
   file:
     path: "{{ liberty_install_path }}/java/{{ jdk_version }}"
