@@ -8,6 +8,10 @@
     product_id: "com.ibm.websphere.liberty.ND_{{ liberty_pid }}"
   register: iim_info
 
+- name: Print Output of Check packages
+  debug:
+    var: iim_info
+
 - name: Install Base version
   include_tasks: base_install.yml
   when: not iim_info.base_installed
